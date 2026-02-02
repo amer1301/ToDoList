@@ -1,0 +1,139 @@
+.card {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 1rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.04);
+  display: grid;
+  gap: 0.75rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.title {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.titleInput {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 0.75rem;
+  padding: 0.55rem 0.65rem;
+  background: rgba(0, 0, 0, 0.2);
+  color: inherit;
+}
+
+.status {
+  padding: 0.25rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  white-space: nowrap;
+}
+
+.statusNotStarted {
+  background: rgba(255, 80, 80, 0.15);
+}
+
+.statusDoing {
+  background: rgba(255, 180, 60, 0.15);
+}
+
+.statusDone {
+  background: rgba(80, 255, 160, 0.15);
+}
+
+.description {
+  margin: 0;
+  opacity: 0.9;
+  word-break: break-word;
+}
+
+.descriptionEmpty {
+  margin: 0;
+  opacity: 0.6;
+}
+
+.descriptionInput {
+  width: 100%;
+  min-height: 90px;
+  resize: vertical;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 0.75rem;
+  padding: 0.65rem;
+  background: rgba(0, 0, 0, 0.2);
+  color: inherit;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.control {
+  display: grid;
+  gap: 0.35rem;
+  font-size: 0.9rem;
+}
+
+.select {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 0.75rem;
+  padding: 0.55rem 0.65rem;
+  background: rgba(0, 0, 0, 0.2);
+  color: inherit;
+}
+
+.actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.button,
+.buttonSecondary,
+.buttonDanger {
+  border: 0;
+  border-radius: 0.8rem;
+  padding: 0.55rem 0.75rem;
+  cursor: pointer;
+  color: white;
+}
+
+.button {
+  background: rgba(100, 108, 255, 0.85);
+}
+
+.buttonSecondary {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.buttonDanger {
+  background: rgba(255, 80, 80, 0.8);
+}
+
+.button:disabled,
+.buttonSecondary:disabled,
+.buttonDanger:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.error {
+  margin: 0;
+  color: rgba(255, 120, 120, 0.95);
+}
+
+@media (max-width: 450px) {
+  .card {
+    padding: 0.85rem;
+  }
+}

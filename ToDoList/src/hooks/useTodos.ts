@@ -36,7 +36,7 @@ export function useTodos() {
             setTodos((prev) => [created, ...prev]);
             return { ok: true as const };
         } catch (err) {
-            setError(toErrorMEssage(err));
+            setError(toErrorMessage(err));
             return { ok: false as const };
         } finally {
             setBusy((prev) => (prev === "create" ? null : prev));
