@@ -43,14 +43,14 @@ export function useTodos() {
         }
     }, []);
 
-    const update = useCallback(async (id: string, patch: UpdateTodoInput) => {
+    const update = useCallback(async (id: number, patch: UpdateTodoInput) => {
        const before = todos;
-    setTodos((prev) => prev.map((t) => (t._id === id ? ({ ...t, ...patch } as Todo) : t)));
+    setTodos((prev) => prev.map((t) => (t.id === id ? ({ ...t, ...patch } as Todo) : t)));
     try {
       setBusy("update");
       setError(null);
       const updated = await updateTodo(id, patch);
-      setTodos((prev) => prev.map((t) => (t._id === id ? updated : t)));
+      setTodos((prev) => prev.map((t) => (t.id === id ? updated : t)));
       return { ok: true as const };
     } catch (err) {
       setTodos(before);
@@ -61,9 +61,9 @@ export function useTodos() {
     }
   }, [todos]);
 
-  const remove = useCallback(async (id: string) => {
+  const remove = useCallback(async (id: number) => {
     const before = todos;
-    setTodos((prev) => prev.filter((t) => t._id !== id));
+    setTodos((prev) => prev.filter((t) => t.id !== id));
     try {
         setBusy("delete");
         setError(null);
@@ -79,7 +79,7 @@ export function useTodos() {
   }, [todos]);
 
   const updateStatus = useCallback(
-    async (id: string, status: TodoStatus) => update(id, {status }),
+    async (id: number, status: TodoStatus) => update(id, {status }),
     [update]
   );
 

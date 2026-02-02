@@ -9,9 +9,9 @@ type SortKey = "newest" | "title" | "status";
 type Props = {
     todos: Todo[];
     disabled?: boolean;
-    onUpdateStatus: (id: string, status: TodoStatus) => Promise<{ ok: boolean }>;
-    onUpdate: (id: string, patch: { title?: string; description?: string }) => Promise<{ ok: boolean }>;
-    onDelete: (id: string) => Promise<{ ok: boolean }>;
+    onUpdateStatus: (id: number, status: TodoStatus) => Promise<{ ok: boolean }>;
+    onUpdate: (id: number, patch: { title?: string; description?: string }) => Promise<{ ok: boolean }>;
+    onDelete: (id: number) => Promise<{ ok: boolean }>;
 };
 
 export default function TodoList({ todos, disabled = false, onUpdateStatus, onUpdate, onDelete }: Props) {
@@ -68,7 +68,7 @@ export default function TodoList({ todos, disabled = false, onUpdateStatus, onUp
         <div className={styles.list}>
           {visible.map((todo) => (
             <TodoItem
-              key={todo._id}
+              key={todo.id}
               todo={todo}
               onUpdateStatus={onUpdateStatus}
               onUpdate={onUpdate}

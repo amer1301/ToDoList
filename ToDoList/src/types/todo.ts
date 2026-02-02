@@ -3,7 +3,7 @@ export const TODO_STATUSES = ["Ej påbörjad", "Pågående", "Avklarad"] as cons
 export type TodoStatus = (typeof TODO_STATUSES)[number];
 
 export interface Todo {
-    _id: string;
+    id: number;
     title: string;
     description?: string;
     status: TodoStatus;

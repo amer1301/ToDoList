@@ -15,7 +15,7 @@ export default function TodoForm({ onCreate, disabled = false }: Props) {
     const [status, setStatus] = useState<TodoStatus>("Ej påbörjad");
     const [errors, setErrors] = useState<Errors>({});
     const [submitError, setSubmitError] = useState<string | null>(null);
-    const {submitting, setSubmitting} = useState(false);
+    const [submitting, setSubmitting] = useState(false);
 
     const remaining = useMemo(() => 200 - description.length, [description.length]);
 

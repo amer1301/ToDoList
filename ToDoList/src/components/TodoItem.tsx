@@ -4,9 +4,9 @@ import styles from "./TodoItem.module.css";
 
 type Props = {
     todo: Todo;
-    onUpdateStatus: (id: string, status: TodoStatus) => Promise<{ ok: boolean }>;
-    onUpdate: (id: string, patch: { title?: string; description?: string }) => Promise<{ ok: boolean }>;
-    onDelete: (id: string) => Promise<{ ok: boolean }>;
+    onUpdateStatus: (id: number, status: TodoStatus) => Promise<{ ok: boolean }>;
+    onUpdate: (id: number, patch: { title?: string; description?: string }) => Promise<{ ok: boolean }>;
+    onDelete: (id: number) => Promise<{ ok: boolean }>;
     disabled?: boolean;
 };
 
@@ -31,7 +31,7 @@ export default function TodoItem({ todo, onUpdateStatus, onUpdate, onDelete, dis
 
     async function handleStatusChange(next: TodoStatus) {
         setError(null);
-        const res = await onUpdateStatus(todo._id, next);
+        const res = await onUpdateStatus(todo.id, next);
         if (!res.ok) setError("Kunde inte uppdatera status.");
     }
 
@@ -49,7 +49,7 @@ export default function TodoItem({ todo, onUpdateStatus, onUpdate, onDelete, dis
         }
         setSaving(true);
         setError(null);
-        const res = await onUpdate(todo._id, { title: title.trim(), description: description.trim() });
+        const res = await onUpdate(todo.id, { title: title.trim(), description: description.trim() });
         setSaving(false);
         if (!res.ok) {
             setError("Kunde inte spara ändringar.");
@@ -69,7 +69,7 @@ export default function TodoItem({ todo, onUpdateStatus, onUpdate, onDelete, dis
         if (!confirm(`Ta bort "${todo.title}"?`)) return;
         setDeleting(true);
         setError(null);
-        const res = await onDelete(todo._id);
+        const res = await onDelete(todo.id);
         setDeleting(false);
         if (!res.ok) setError("Kunde inte ta bort uppgift.");
     }
