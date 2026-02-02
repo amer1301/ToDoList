@@ -49,10 +49,11 @@ export async function createTodo(input: CreateTodoInput): Promise<Todo> {
 
 export function updateTodo(id: number, input: UpdateTodoInput) {
   return http<Todo>(`/todos/${id}`, {
-    method: "PUT",
+    method: "PATCH",
     body: JSON.stringify(input),
   });
 }
+
 
 export async function deleteTodo(id: number): Promise<void> {
     await http<void>(`/todos/${id}`, { method: "DELETE" });

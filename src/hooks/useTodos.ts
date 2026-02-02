@@ -6,7 +6,7 @@ type BusyOp = "fetch" | "create" | "update" | "delete" | null;
 
 export function useTodos() {
     const [todos, setTodos] = useState<Todo[]>([]);
-    const [error, setError] = useState<String | null>(null);
+    const [error, setError] = useState<string | null>(null);
     const [busy, setBusy] = useState<BusyOp>("fetch");
 
     const isLoading = busy === "fetch";
