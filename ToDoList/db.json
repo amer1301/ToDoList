@@ -1,3 +1,8 @@
 {
-  "todos": []
+  "todos": [
+    {
+      "status": "Ej påbörjad",
+      "id": "186d"
+    }
+  ]
 }
