@@ -1,73 +1,116 @@
-# React + TypeScript + Vite
+# Att göra-lista (Todo App)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+En frontend-applikation byggd med **React** och **TypeScript** som hanterar en dynamisk att göra-lista (Todo List) med full **CRUD-funktionalitet** mot ett backend-API.
 
-Currently, two official plugins are available:
+Applikationen är en del av en laboration med fokus på state management i React, formulärhantering, API-integration och versionshantering med Git.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## Syfte och mål
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Målet med projektet är att:
 
-## Expanding the ESLint configuration
+- Fördjupa förståelsen för **state management** i React
+- Använda **useEffect** för att hämta och hantera dynamisk data
+- Implementera **formulär med validering**
+- Öva på **state lifting** mellan komponenter
+- Bygga en komplett frontend med **CRUD-funktionalitet**
+- Kommunicera med ett **backend-API**
+- Arbeta strukturerat med **Git och GitHub**
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Tekniker som används
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- **React**
+- **TypeScript**
+- **Vite**
+- **CSS Modules**
+- **json-server** (backend / mock-API)
+- **react-spinners** (laddningsindikatorer)
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+---
+
+## Funktionalitet
+
+### Todos
+- Skapa en ny todo
+- Visa alla todos
+- Uppdatera:
+  - titel
+  - beskrivning
+  - status (Ej påbörjad, Pågående, Avklarad)
+- Ta bort en todo (med egen bekräftelsedialog)
+
+### Formulär & validering
+- Titel är obligatorisk och minst **3 tecken**
+- Beskrivning är valfri, max **200 tecken**
+- Status har standardvärde **Ej påbörjad**
+
+### UX & UI
+- Laddningsindikatorer vid API-anrop
+- Minsta visningstid för loader vid uppdatering
+- Felhantering med tydliga meddelanden
+- Responsiv layout (desktop & mobil)
+- Ljusbeige, svart och vitt färgtema
+- Egen bekräftelsedialog istället för `alert/confirm`
+
+---
+
+## Projektstruktur (översikt)
+```text
+src/
+├── api/ # API-anrop (CRUD mot backend)
+├── components/ # React-komponenter
+│ ├── TodoForm
+│ ├── TodoList
+│ ├── TodoItem
+│ └── ConfirmDialog
+├── hooks/ # Custom hooks (useTodos)
+├── types/ # TypeScript-typer
+├── App.tsx
+└── main.tsx
+```
+---
+
+## Kom igång lokalt
+
+### 1. Klona repot
+```bash
+git clone https://github.com/amer1301/ToDoList.git
+cd ToDoList
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 2. Installera beroenden
+npm install
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### 3. Starta backend (json-server)
+npx json-server --watch db.json --port 5000
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 4. Starta frontend
+npm run dev
+
+Applikationen körs på:
+http://localhost:5173
+
+Backend-API:
+http://localhost:5000/todos
+
+---
+
+## Backend (json-server)
+Backenden är byggd med json-server och stödjer följande endpoints:
+- GET /todos
+- POST /todos
+- PATCH /todos/:id
+- DELETE /todos/:id
+
+Exempel på todo-objekt:
+```json
+{
+  "id": 1,
+  "title": "Handla mat",
+  "description": "Mjölk, bröd, frukt",
+  "status": "Ej påbörjad"
+}
 ```
