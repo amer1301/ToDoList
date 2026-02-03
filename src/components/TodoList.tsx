@@ -36,7 +36,7 @@ export default function TodoList({ todos, disabled = false, onUpdateStatus, onUp
     }, [filter, sort, todos]);
 
     return (
-    <section className={styles.section}>
+    <section className={styles.card}>
       <div className={styles.topRow}>
         <h2 className={styles.heading}>Todos</h2>
         <div className={styles.tools}>

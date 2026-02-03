@@ -2,9 +2,9 @@
   "todos": [
     {
       "id": "85db",
-      "title": "testing",
-      "description": "testing hej och hå",
-      "status": "Avklarad"
+      "title": "Handla mat",
+      "description": "Inköpslista:\nlök\nköttfärs\nägg",
+      "status": "Pågående"
     }
   ]
 }

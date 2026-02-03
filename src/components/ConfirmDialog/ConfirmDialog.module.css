@@ -1,28 +1,33 @@
 .backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0,0,0,0.45);
   display: grid;
   place-items: center;
   z-index: 1000;
 }
 
 .dialog {
-  background: white;
-  padding: 1.5rem;
-  border-radius: 12px;
-  width: 90%;
-  max-width: 360px;
+  width: min(92vw, 420px);
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 18px;
+  box-shadow: var(--shadow);
 }
 
 .actions {
+  margin-top: 14px;
   display: flex;
   justify-content: flex-end;
-  gap: 0.5rem;
-  margin-top: 1rem;
+  gap: 10px;
 }
 
 .danger {
-  background: #ff6b6b;
+  border: none;
+  background: var(--danger);
   color: white;
+  border-radius: 999px;
+  padding: 10px 12px;
+  font-weight: 800;
 }
